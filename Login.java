@@ -5,10 +5,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/* to do: mudar o home() para ux das mesas*/
-
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -84,7 +80,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(caixaDeTxtSenha)
                     .addComponent(caixaDeTxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(58, 58, 58)
                         .addComponent(btLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
@@ -118,17 +114,18 @@ public class Login extends javax.swing.JFrame {
     private void btLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogin1ActionPerformed
         // TODO add your handling code here:
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","Vinivini14!");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante","root","12345678vini@");
            
             String usuario = caixaDeTxtUsuario.getText();
             String senha = caixaDeTxtSenha.getText();
             
             Statement stm = con.createStatement();
             
-            String sql = "select * from login where usuario='" +usuario+"' and senha='"+senha+"'";
+            String sql = "select * from login where usuario_login='" +usuario+"' and senha_login='"+senha+"'";
              
             ResultSet rs = stm.executeQuery(sql);
+            System.out.println(sql);
             
             if(rs.next()){
                 dispose();
@@ -146,8 +143,6 @@ public class Login extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btLogin1ActionPerformed
-
-                                               
 
     /**
      * @param args the command line arguments
@@ -185,6 +180,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btLogin;
     private javax.swing.JButton btLogin1;
     private javax.swing.JTextField caixaDeTxtSenha;
     private javax.swing.JTextField caixaDeTxtUsuario;
