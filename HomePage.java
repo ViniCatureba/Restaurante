@@ -297,7 +297,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
          try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante","root","12345678vini@");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante","root","Vinivini14!");
            
             String usuario = caixaTxtRegistroUsuario.getText();
             String senha = caixaTxtRegistroSenha.getText();
@@ -309,7 +309,7 @@ public class HomePage extends javax.swing.JFrame {
                 con.close();
             }
 
-            stm.executeUpdate("insert into login (usuario_login, senha_login, cargo_login)" + "values ('"+usuario+"', '"+senha+"'");
+            stm.executeUpdate("insert into login (usuario, senha, cargo)" + "values ('"+usuario+"', '"+senha+"'");
             
             
             JOptionPane.showMessageDialog(this, "Registro criado com sucesso!");
