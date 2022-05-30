@@ -1,4 +1,3 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -114,18 +113,18 @@ public class Login extends javax.swing.JFrame {
     private void btLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogin1ActionPerformed
         // TODO add your handling code here:
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante","root","12345678vini@");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","Vinivini14!");
            
             String usuario = caixaDeTxtUsuario.getText();
             String senha = caixaDeTxtSenha.getText();
             
             Statement stm = con.createStatement();
             
-            String sql = "select * from login where usuario_login='" +usuario+"' and senha_login='"+senha+"'";
-            
-            if("Admin".equals(usuario) && "12345".equals(senha)){
+            String sql = "select * from login where usuario='" +usuario+"' and senha='"+senha+"'";
+             
             ResultSet rs = stm.executeQuery(sql);
+            System.out.println(sql);
             
             if(rs.next()){
                 dispose();
@@ -133,27 +132,11 @@ public class Login extends javax.swing.JFrame {
                 home.show();
             }
             else{
-                JOptionPane.showMessageDialog(this, "usuario ou senha incorreto.");
-                caixaDeTxtUsuario.setText("");
-                caixaDeTxtSenha.setText("");
-            }
-            con.close();
-            }
-            
-            ResultSet rs = stm.executeQuery(sql);
-            
-            if(rs.next()){
-                dispose();
-                HomePageFuncionario homefu = new HomePageFuncionario();
-                homefu.show();
-            }
-            else{
                 JOptionPane.showMessageDialog(this, "usuario ou senha errado.");
                 caixaDeTxtUsuario.setText("");
                 caixaDeTxtSenha.setText("");
             }
             con.close();
-            
         }
         catch(Exception e){
             System.out.println(e.getMessage());
