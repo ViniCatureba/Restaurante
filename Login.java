@@ -123,9 +123,9 @@ public class Login extends javax.swing.JFrame {
             Statement stm = con.createStatement();
             
             String sql = "select * from login where usuario_login='" +usuario+"' and senha_login='"+senha+"'";
-             
+            
+            if("Admin".equals(usuario) && "12345".equals(senha)){
             ResultSet rs = stm.executeQuery(sql);
-            System.out.println(sql);
             
             if(rs.next()){
                 dispose();
@@ -133,11 +133,27 @@ public class Login extends javax.swing.JFrame {
                 home.show();
             }
             else{
+                JOptionPane.showMessageDialog(this, "usuario ou senha incorreto.");
+                caixaDeTxtUsuario.setText("");
+                caixaDeTxtSenha.setText("");
+            }
+            con.close();
+            }
+            
+            ResultSet rs = stm.executeQuery(sql);
+            
+            if(rs.next()){
+                dispose();
+                HomePageFuncionario homefu = new HomePageFuncionario();
+                homefu.show();
+            }
+            else{
                 JOptionPane.showMessageDialog(this, "usuario ou senha errado.");
                 caixaDeTxtUsuario.setText("");
                 caixaDeTxtSenha.setText("");
             }
             con.close();
+            
         }
         catch(Exception e){
             System.out.println(e.getMessage());

@@ -47,9 +47,9 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         caixaTxtRegistroUsuario = new javax.swing.JTextField();
-        caixaTxtRegistroCargo = new javax.swing.JTextField();
         caixaTxtRegistroSenha = new javax.swing.JTextField();
         btRegistrar = new javax.swing.JButton();
+        listaDeCargo = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("Home page");
@@ -119,19 +119,19 @@ public class HomePage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mesa01, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mesa04, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mesa05, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mesa02, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
+                .addGap(81, 81, 81)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mesa02, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesa05, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mesa03, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mesa06, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                .addGap(40, 40, 40))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,12 +166,6 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        caixaTxtRegistroCargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                caixaTxtRegistroCargoActionPerformed(evt);
-            }
-        });
-
         caixaTxtRegistroSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 caixaTxtRegistroSenhaActionPerformed(evt);
@@ -183,6 +177,19 @@ public class HomePage extends javax.swing.JFrame {
         btRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRegistrarActionPerformed(evt);
+            }
+        });
+
+        listaDeCargo.setFont(new java.awt.Font("Sitka Display", 1, 14)); // NOI18N
+        listaDeCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Garçom" }));
+        listaDeCargo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listaDeCargoItemStateChanged(evt);
+            }
+        });
+        listaDeCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDeCargoActionPerformed(evt);
             }
         });
 
@@ -205,9 +212,10 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(caixaTxtRegistroCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(listaDeCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(624, 624, 624))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,13 +229,13 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(caixaTxtRegistroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(caixaTxtRegistroCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(listaDeCargo))
                 .addGap(18, 18, 18)
                 .addComponent(btRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrar", jPanel1);
@@ -247,11 +255,14 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Esse botão não existe "BOTÃO FANTASMA BRO WTF"
+        // Esse botão não existe "BOTÃO FANTASMA BRO WTF"   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void mesa01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa01ActionPerformed
         // TODO add your handling code here:
+        inside_mesa1 mesa01 = new inside_mesa1();
+        mesa01.show();
+        dispose();
     }//GEN-LAST:event_mesa01ActionPerformed
 
     private void mesa02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa02ActionPerformed
@@ -282,10 +293,6 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mesa06ActionPerformed
 
-    private void caixaTxtRegistroCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaTxtRegistroCargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_caixaTxtRegistroCargoActionPerformed
-
     private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
         // TODO add your handling code here:
          try{
@@ -294,22 +301,20 @@ public class HomePage extends javax.swing.JFrame {
            
             String usuario = caixaTxtRegistroUsuario.getText();
             String senha = caixaTxtRegistroSenha.getText();
-            String cargo = caixaTxtRegistroCargo.getText();
             
             Statement stm = con.createStatement();
             
-            if(usuario.length() <= 1 && senha.length() <= 1 && cargo.length() <= 1){
+            if(usuario.length() <= 1  || senha.length() <= 1){
                 JOptionPane.showMessageDialog(this, "Insira o usuario, senha e cargo corretamente!");
                 con.close();
             }
 
-            stm.executeUpdate("insert into login (usuario_login, senha_login, cargo_login)" + "values ('"+usuario+"', '"+senha+"', '"+cargo+"')");
+            stm.executeUpdate("insert into login (usuario_login, senha_login, cargo_login)" + "values ('"+usuario+"', '"+senha+"'");
             
             
             JOptionPane.showMessageDialog(this, "Registro criado com sucesso!");
             caixaTxtRegistroUsuario.setText("");
-            caixaTxtRegistroSenha.setText("");
-            caixaTxtRegistroCargo.setText("");
+            caixaTxtRegistroSenha.setText("");            
            
             con.close();
         }
@@ -317,6 +322,16 @@ public class HomePage extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btRegistrarActionPerformed
+
+    private void listaDeCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeCargoActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_listaDeCargoActionPerformed
+
+    private void listaDeCargoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDeCargoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDeCargoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -355,7 +370,6 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btRegistrar;
-    private javax.swing.JTextField caixaTxtRegistroCargo;
     private javax.swing.JTextField caixaTxtRegistroSenha;
     private javax.swing.JTextField caixaTxtRegistroUsuario;
     private javax.swing.JButton jButton1;
@@ -366,6 +380,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> listaDeCargo;
     private javax.swing.JButton mesa01;
     private javax.swing.JButton mesa02;
     private javax.swing.JButton mesa03;
@@ -373,4 +388,5 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton mesa05;
     private javax.swing.JButton mesa06;
     // End of variables declaration//GEN-END:variables
+
 }
