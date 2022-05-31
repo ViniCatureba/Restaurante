@@ -2,8 +2,14 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -260,14 +266,23 @@ public class HomePage extends javax.swing.JFrame {
 
     private void mesa01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa01ActionPerformed
         // TODO add your handling code here:
-        inside_mesa1 mesa01 = new inside_mesa1();
-        mesa01.show();
-        dispose();
+        
+    
+        
     }//GEN-LAST:event_mesa01ActionPerformed
 
     private void mesa02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa02ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mesa02ActionPerformed
+        DentroMesa2 mesa1 = new DentroMesa2();
+        mesa1.show();
+        dispose();
+        
+    }
+
+            
+       
+    //GEN-LAST:event_mesa02ActionPerformed
+    
 
     private void mesa04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa04ActionPerformed
         // TODO add your handling code here:
