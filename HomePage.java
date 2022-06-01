@@ -56,6 +56,7 @@ public class HomePage extends javax.swing.JFrame {
         caixaTxtRegistroSenha = new javax.swing.JTextField();
         btRegistrar = new javax.swing.JButton();
         listaDeCargo = new javax.swing.JComboBox<>();
+        
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("Home page");
@@ -284,47 +285,54 @@ public class HomePage extends javax.swing.JFrame {
     //GEN-LAST:event_mesa02ActionPerformed
     
 
-    private void mesa04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa04ActionPerformed
+    private void mesa04ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_mesa04ActionPerformed
+    }
 
-    private void caixaTxtRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaTxtRegistroUsuarioActionPerformed
+    private void caixaTxtRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_caixaTxtRegistroUsuarioActionPerformed
+    }
 
-    private void caixaTxtRegistroSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaTxtRegistroSenhaActionPerformed
+    private void caixaTxtRegistroSenhaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_caixaTxtRegistroSenhaActionPerformed
+    }
 
-    private void mesa03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa03ActionPerformed
+    private void mesa03ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_mesa03ActionPerformed
+    }
 
-    private void mesa05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa05ActionPerformed
+    private void mesa05ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_mesa05ActionPerformed
+    }
 
-    private void mesa06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa06ActionPerformed
+    private void mesa06ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_mesa06ActionPerformed
+    }
 
-    private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarActionPerformed
+    private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        
+        
          try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante","root","Vinivini14!");
-           
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","Vinivini14!");
+            
             String usuario = caixaTxtRegistroUsuario.getText();
             String senha = caixaTxtRegistroSenha.getText();
+            Object cargo = listaDeCargo.getSelectedItem();
+            String cargoString = cargo.toString();
             
-            Statement stm = con.createStatement();
+            if(cargoString == "Admin"){
+                int x = 1;
+                Statement stm = con.createStatement();
             
             if(usuario.length() <= 1  || senha.length() <= 1){
                 JOptionPane.showMessageDialog(this, "Insira o usuario, senha e cargo corretamente!");
                 con.close();
             }
+            
 
-            stm.executeUpdate("insert into login (usuario, senha, cargo)" + "values ('"+usuario+"', '"+senha+"'");
+            stm.executeUpdate("insert into login (usuario, senha, cargo)" + "values ('"+usuario+"', '"+senha+"','"+x+"');");
             
             
             JOptionPane.showMessageDialog(this, "Registro criado com sucesso!");
@@ -332,6 +340,28 @@ public class HomePage extends javax.swing.JFrame {
             caixaTxtRegistroSenha.setText("");            
            
             con.close();
+
+            }else if(cargoString == "Garçom"){
+                int y = 0;
+                Statement stm = con.createStatement();
+            
+            if(usuario.length() <= 1  || senha.length() <= 1){
+                JOptionPane.showMessageDialog(this, "Insira o usuario, senha e cargo corretamente!");
+                con.close();
+            }
+            
+
+            stm.executeUpdate("insert into login (usuario, senha, cargo)" + "values ('"+usuario+"', '"+senha+"','"+y+"');");
+            
+            
+            JOptionPane.showMessageDialog(this, "Registro criado com sucesso!");
+            caixaTxtRegistroUsuario.setText("");
+            caixaTxtRegistroSenha.setText("");            
+           
+            con.close();
+            }
+            
+            
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -342,21 +372,17 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_listaDeCargoActionPerformed
+    }
 
     private void listaDeCargoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDeCargoItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_listaDeCargoItemStateChanged
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -373,9 +399,8 @@ public class HomePage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HomePage().setVisible(true);
