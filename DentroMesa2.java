@@ -3,12 +3,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.print.DocFlavor.STRING;
+import javax.sound.sampled.FloatControl;
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import com.mysql.cj.xdevapi.Statement;
-
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -44,7 +47,7 @@ public class DentroMesa2 extends javax.swing.JFrame {
         txtItemDaMesa2 = new javax.swing.JLabel();
         txtItemDoMenu = new javax.swing.JLabel();
         btVoltar2 = new javax.swing.JButton();
-
+        
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -101,6 +104,11 @@ public class DentroMesa2 extends javax.swing.JFrame {
         txtItemDoMenu.setText("Itens do menu :");
 
         btVoltar2.setText("Voltar");
+        btVoltar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltar2(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,7 +182,7 @@ public class DentroMesa2 extends javax.swing.JFrame {
                 
             }
         
-            
+            con.close();
             } 
             catch (ClassNotFoundException | SQLException e1){
                 
@@ -204,7 +212,7 @@ public class DentroMesa2 extends javax.swing.JFrame {
                     model.addRow(row);
                     
                 }
-            
+                con.close();
                 
                 } 
                 catch (ClassNotFoundException | SQLException e1){
@@ -217,26 +225,70 @@ public class DentroMesa2 extends javax.swing.JFrame {
 
     private void btPagar2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                        
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","Vinivini14!");
+            java.sql.Statement st = con.createStatement();
+            String query= "SELECT ROUND(SUM(preco), 2) FROM mesa2;";
+            ResultSet rs=st.executeQuery(query);
+           while(rs.next()){
+               Float valorMesa2 = rs.getFloat(1);
+               JOptionPane.showMessageDialog(this, "Valor a ser pago:R$"+valorMesa2+"!");
+               String query2 = "TRUNCATE mesa2;";
+               st.executeUpdate(query2);
+               DentroMesa2 mesa2 = new DentroMesa2();
+                       mesa2.show();
+                       dispose();
+           }
+            
+            con.close();
+
+        }
+        catch (ClassNotFoundException | SQLException e1){
+            System.out.println(e1);
+
+
+
+
+        
+    }       
+}
+
+    private void btVoltar2(java.awt.event.ActionEvent evt){
+        HomePage home = new HomePage();
+            home.show();
+            dispose();
+            }
+
+    
+
+
 
     private void btAdd2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         int index = tableItensMenu2.getSelectedRow();
-        String selectedRowFromTbMesa2 = (String) tableItensMenu2.getValueAt(index, 0);
-        System.out.println(selectedRowFromTbMesa2);
+        String selectedRowFromTbMenu2 = (String) tableItensMenu2.getValueAt(index, 0);
+        
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","Vinivini14!");
             java.sql.Statement st = con.createStatement();
-            String query= "INSERT INTO mesa2 SELECT item,preco FROM menu WHERE item='"+selectedRowFromTbMesa2+"';";
-            st.executeQuery(query);
+            String query= "INSERT INTO mesa2 SELECT item,preco FROM menu WHERE item='"+selectedRowFromTbMenu2+"';";
+            st.executeUpdate(query);
+            
+            
 
-  
-
-        }catch (ClassNotFoundException | SQLException e1){
         }
-    }                                        
+        catch (ClassNotFoundException | SQLException e1){
+            System.out.println(e1);
+        }
+        DentroMesa2 mesa1 = new DentroMesa2();
+        mesa1.show();
+        dispose();
+    }
+
 
     /**
      * @param args the command line arguments
