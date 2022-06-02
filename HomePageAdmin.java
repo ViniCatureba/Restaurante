@@ -63,7 +63,7 @@ public class HomePageAdmin extends javax.swing.JFrame {
         caixaTxtRegistroUsuario = new javax.swing.JTextField();
         caixaTxtRegistroSenha = new javax.swing.JTextField();
         btRegistrar = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        listaDeCargo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -216,6 +216,11 @@ public class HomePageAdmin extends javax.swing.JFrame {
 
         btUpdateCardapio.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btUpdateCardapio.setText("Atualizar");
+        btUpdateCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpdateCardapioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -301,8 +306,13 @@ public class HomePageAdmin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Garçom" }));
+        listaDeCargo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listaDeCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Garçom" }));
+        listaDeCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDeCargoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -328,7 +338,7 @@ public class HomePageAdmin extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(listaDeCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(624, 624, 624))
         );
         jPanel1Layout.setVerticalGroup(
@@ -345,7 +355,7 @@ public class HomePageAdmin extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(listaDeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -448,6 +458,14 @@ public class HomePageAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btLogoffActionPerformed
 
+    private void listaDeCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDeCargoActionPerformed
+
+    private void btUpdateCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateCardapioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btUpdateCardapioActionPerformed
+
     private void mesa02ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         DentroMesa2 mesa1 = new DentroMesa2();
@@ -485,11 +503,11 @@ public class HomePageAdmin extends javax.swing.JFrame {
         
          try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","Vinivini14!");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurante_login","root","12345678vini@");
             
             String usuario = caixaTxtRegistroSenha.getText();
             String senha = caixaTxtRegistroSenha.getText();
-            Object cargo = jComboBox1.getSelectedItem();
+            Object cargo = listaDeCargo.getSelectedItem();
             String cargoString = cargo.toString();
             
             if(cargoString == "Admin"){
@@ -538,12 +556,6 @@ public class HomePageAdmin extends javax.swing.JFrame {
         }
     }                                           
 
-    private void listaDeCargoActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-        
-        
-    }
-
     private void listaDeCargoItemStateChanged(java.awt.event.ItemEvent evt) {                                              
         // TODO add your handling code here:
     }
@@ -590,7 +602,6 @@ public class HomePageAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField caixaTxtValorItem;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -606,6 +617,7 @@ public class HomePageAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JComboBox<String> listaDeCargo;
     private javax.swing.JTable menuCardapioTable;
     private javax.swing.JButton mesa01;
     private javax.swing.JButton mesa02;
