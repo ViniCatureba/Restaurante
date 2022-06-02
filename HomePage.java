@@ -9,8 +9,6 @@ import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -267,6 +265,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void mesa01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa01ActionPerformed
         // TODO add your handling code here:
+        DentroMesa1 mesa1 = new DentroMesa1();
+        mesa1.show();
+        dispose();
         
     
         
@@ -274,8 +275,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void mesa02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa02ActionPerformed
         // TODO add your handling code here:
-        DentroMesa2 mesa1 = new DentroMesa2();
-        mesa1.show();
+        DentroMesa2 mesa2 = new DentroMesa2();
+        mesa2.show();
         dispose();
         
     }
@@ -287,6 +288,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void mesa04ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        DentroMesa4 mesa4 = new DentroMesa4();
+        mesa4.show();
+        dispose();
     }
 
     private void caixaTxtRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,14 +303,23 @@ public class HomePage extends javax.swing.JFrame {
 
     private void mesa03ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        DentroMesa3 mesa3 = new DentroMesa3();
+        mesa3.show();
+        dispose();
     }
 
     private void mesa05ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        DentroMesa5 mesa5 = new DentroMesa5();
+        mesa5.show();
+        dispose();
     }
 
     private void mesa06ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        DentroMesa6 mesa6 = new DentroMesa6();
+        mesa6.show();
+        dispose();
     }
 
     private void btRegistrarActionPerformed(java.awt.event.ActionEvent evt) {
